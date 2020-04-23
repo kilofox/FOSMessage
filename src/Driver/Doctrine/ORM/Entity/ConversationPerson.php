@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\Message\Model\ConversationPerson as BaseConversationPerson;
 
 /**
- * @ORM\Table(name="fos_message_conversations_persons")
+ * @ORM\Table(name="user_message_conversations_persons")
  * @ORM\Entity
  */
 class ConversationPerson extends BaseConversationPerson
@@ -48,8 +48,8 @@ class ConversationPerson extends BaseConversationPerson
     /**
      * @var \FOS\Message\Model\TagInterface[]|\Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="FOS\Message\Driver\Doctrine\ORM\Entity\Tag")
-     * @ORM\JoinTable(name="fos_message_conversations_persons_tags")
+     * @ORM\ManyToMany(targetEntity="FOS\Message\Driver\Doctrine\ORM\Entity\Tag", cascade={"persist"})
+     * @ORM\JoinTable(name="user_message_conversations_persons_tags")
      */
     protected $tags;
 }

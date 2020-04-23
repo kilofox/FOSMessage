@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\Message\Model\Message as BaseMessage;
 
 /**
- * @ORM\Table(name="fos_message_messages")
+ * @ORM\Table(name="user_message_messages")
  * @ORM\Entity
  */
 class Message extends BaseMessage

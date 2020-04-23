@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\Message\Model\MessagePerson as BaseMessagePerson;
 
 /**
- * @ORM\Table(name="fos_message_messages_persons")
+ * @ORM\Table(name="user_message_messages_persons")
  * @ORM\Entity
  */
 class MessagePerson extends BaseMessagePerson

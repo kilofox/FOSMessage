@@ -18,7 +18,7 @@ use FOS\Message\Model\ConversationPersonInterface;
 use FOS\Message\Model\MessageInterface;
 
 /**
- * @ORM\Table(name="fos_message_conversations")
+ * @ORM\Table(name="user_message_conversations")
  * @ORM\Entity
  */
 class Conversation extends BaseConversation

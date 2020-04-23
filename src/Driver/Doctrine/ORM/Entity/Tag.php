@@ -16,7 +16,7 @@ use FOS\Message\Model\TagInterface;
 use Webmozart\Assert\Assert;
 
 /**
- * @ORM\Table(name="fos_message_tags")
+ * @ORM\Table(name="user_message_tags")
  * @ORM\Entity
  */
 class Tag implements TagInterface
