@@ -115,7 +115,7 @@ interface DriverInterface
     /**
      * Return the list of tags.
      *
-     * @return TagInterface[]|Collection The tags
+     * @return Collection The tags
      */
     public function findTags();
 
@@ -162,6 +162,14 @@ interface DriverInterface
      * @return bool True if the save succeed, false otherwise
      */
     public function persistMessagePerson(MessagePersonInterface $messagePerson);
+
+    /**
+     * Persist a tag in the persistance layer.
+     *
+     * @param TagInterface $tag The tag to persist
+     * @return bool True if the save succeed, false otherwise
+     */
+    public function persistTag(TagInterface $tag);
 
     /**
      * Flush the previous `persistXXX()` calls by really writing in the

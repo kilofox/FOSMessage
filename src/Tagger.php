@@ -121,4 +121,25 @@ class Tagger implements TaggerInterface
         return $this->driver->findTags();
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function createTag(TagInterface $tag)
+    {
+        $tags = $this->getTags();
+
+        $exists = $tags->exists(function($key, $value) use ($tag) {
+            return $value->getName() === $tag->getName();
+        });
+
+        if ($exists) {
+            return false;
+        }
+
+        $this->driver->persist($tag);
+        $this->driver->flush();
+
+        return true;
+    }
+
 }

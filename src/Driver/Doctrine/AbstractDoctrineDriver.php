@@ -18,6 +18,7 @@ use FOS\Message\Model\ConversationInterface;
 use FOS\Message\Model\ConversationPersonInterface;
 use FOS\Message\Model\MessageInterface;
 use FOS\Message\Model\MessagePersonInterface;
+use FOS\Message\Model\TagInterface;
 
 /**
  * Abstract driver for Doctrine persistence managers (ORM and ODM).
@@ -91,6 +92,14 @@ abstract class AbstractDoctrineDriver extends AbstractDriver
     public function persistMessagePerson(MessagePersonInterface $messagePerson)
     {
         $this->objectManager->persist($messagePerson);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function persistTag(TagInterface $tag)
+    {
+        $this->objectManager->persist($tag);
     }
 
     /**
