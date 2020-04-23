@@ -15,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\Message\Model\ConversationPerson as BaseConversationPerson;
 
 /**
+ * @author Titouan Galopin <galopintitouan@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  * @ORM\Table(name="user_message_conversations_persons")
  * @ORM\Entity
  */

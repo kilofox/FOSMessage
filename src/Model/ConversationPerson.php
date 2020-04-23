@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
  * @author Christian Riesen <chris.riesen@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 class ConversationPerson implements ConversationPersonInterface
 {
@@ -89,7 +90,11 @@ class ConversationPerson implements ConversationPersonInterface
      */
     public function addTag(TagInterface $tag)
     {
-        if ($this->tags->contains($tag)) {
+        $contains = $this->tags->exists(function($key, $value) use ($tag) {
+            return $value->getName() === $tag->getName();
+        });
+
+        if ($contains) {
             return;
         }
 

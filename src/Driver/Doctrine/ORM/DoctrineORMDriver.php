@@ -23,6 +23,7 @@ use Symfony\Component\VarDumper\VarDumper;
  * Driver for Doctrine ORM.
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 class DoctrineORMDriver extends AbstractDoctrineDriver
 {
@@ -34,20 +35,23 @@ class DoctrineORMDriver extends AbstractDoctrineDriver
      * @param string        $conversationPersonClass
      * @param string        $messageClass
      * @param string        $messagePersonClass
+     * @param string        $tagClass
      */
     public function __construct(
         EntityManager $objectManager,
         $conversationClass = 'FOS\Message\Driver\Doctrine\ORM\Entity\Conversation',
         $conversationPersonClass = 'FOS\Message\Driver\Doctrine\ORM\Entity\ConversationPerson',
         $messageClass = 'FOS\Message\Driver\Doctrine\ORM\Entity\Message',
-        $messagePersonClass = 'FOS\Message\Driver\Doctrine\ORM\Entity\MessagePerson'
+        $messagePersonClass = 'FOS\Message\Driver\Doctrine\ORM\Entity\MessagePerson',
+        $tagClass = 'FOS\Message\Driver\Doctrine\ORM\Entity\Tag'
     ) {
         parent::__construct(
             $objectManager,
             $conversationClass,
             $conversationPersonClass,
             $messageClass,
-            $messagePersonClass
+            $messagePersonClass,
+            $tagClass
         );
     }
 
@@ -167,4 +171,17 @@ class DoctrineORMDriver extends AbstractDoctrineDriver
             ->orderBy('m.date', 'ASC')
             ->addOrderBy('m.id', 'ASC');
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findTags()
+    {
+        $qb = $this->objectManager->createQueryBuilder()
+            ->select('t')
+            ->from($this->getTagClass(), 't');
+
+        return new ArrayCollection($qb->getQuery()->getResult());
+    }
+
 }

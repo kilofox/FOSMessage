@@ -25,6 +25,7 @@ use FOS\Message\Model\TagInterface;
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
  * @author Christian Riesen <chris.riesen@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 interface DriverInterface
 {
@@ -110,6 +111,13 @@ interface DriverInterface
      * @return MessageInterface[]|Collection The messages
      */
     public function findMessages(ConversationInterface $conversation, $offset = 0, $limit = 20, $sortDirection = 'ASC');
+
+    /**
+     * Return the list of tags.
+     *
+     * @return TagInterface[]|Collection The tags
+     */
+    public function findTags();
 
     /**
      * Persist a conversation in the persistance layer.
