@@ -23,6 +23,7 @@ use FOS\Message\Model\TagInterface;
  * (such as "archived", "deleted", etc.).
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 class Tagger implements TaggerInterface
 {
@@ -111,4 +112,13 @@ class Tagger implements TaggerInterface
 
         return true;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->driver->findTags();
+    }
+
 }

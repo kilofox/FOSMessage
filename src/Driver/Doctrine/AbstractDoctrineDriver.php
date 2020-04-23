@@ -23,6 +23,7 @@ use FOS\Message\Model\MessagePersonInterface;
  * Abstract driver for Doctrine persistence managers (ORM and ODM).
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 abstract class AbstractDoctrineDriver extends AbstractDriver
 {
@@ -39,15 +40,23 @@ abstract class AbstractDoctrineDriver extends AbstractDriver
      * @param string        $conversationPersonClass
      * @param string        $messageClass
      * @param string        $messagePersonClass
+     * @param string        $tagClass
      */
     public function __construct(
         ObjectManager $objectManager,
         $conversationClass,
         $conversationPersonClass,
         $messageClass,
-        $messagePersonClass
+        $messagePersonClass,
+        $tagClass
     ) {
-        parent::__construct($conversationClass, $conversationPersonClass, $messageClass, $messagePersonClass);
+        parent::__construct(
+            $conversationClass,
+            $conversationPersonClass,
+            $messageClass,
+            $messagePersonClass,
+            $tagClass
+        );
 
         $this->objectManager = $objectManager;
     }
