@@ -1,5 +1,5 @@
 {
-    "name": "friendsofsymfony/message",
+    "name": "ericjank/message",
     "type": "library",
     "description": "A framework-agnostic PHP 5.4+ user-to-user messaging library",
     "keywords": [
@@ -8,13 +8,13 @@
         "notification",
         "user-to-user"
     ],
-    "homepage": "https://github.com/FriendsOfSymfony/FOSMessage",
+    "homepage": "https://github.com/ericjank/FOSMessage",
     "license": "MIT",
     "authors": [
         {
-            "name": "Titouan Galopin",
-            "email": "galopintitouan@gmail.com",
-            "homepage": "http://titouangalopin.com"
+            "name": "杨龙",
+            "email": "50172189@qq.com",
+            "homepage": "http://fractal-technology.com"
         }
     ],
     "require": {

@@ -19,6 +19,7 @@ use FOS\Message\Model\PersonInterface;
  * Abstract driver providing model class customization.
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 abstract class AbstractDriver implements DriverInterface
 {
@@ -43,19 +44,31 @@ abstract class AbstractDriver implements DriverInterface
     private $messagePersonClass;
 
     /**
+     * @var string
+     */
+    private $tagClass;
+
+    /**
      * Constructor.
      *
      * @param string $conversationClass
      * @param string $conversationPersonClass
      * @param string $messageClass
      * @param string $messagePersonClass
+     * @param string $tagClass
      */
-    public function __construct($conversationClass, $conversationPersonClass, $messageClass, $messagePersonClass)
-    {
+    public function __construct(
+        $conversationClass,
+        $conversationPersonClass,
+        $messageClass,
+        $messagePersonClass,
+        $tagClass
+    ) {
         $this->conversationClass = $conversationClass;
         $this->conversationPersonClass = $conversationPersonClass;
         $this->messageClass = $messageClass;
         $this->messagePersonClass = $messagePersonClass;
+        $this->tagClass = $tagClass;
     }
 
     /**
@@ -88,6 +101,14 @@ abstract class AbstractDriver implements DriverInterface
     public function getMessagePersonClass()
     {
         return $this->messagePersonClass;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTagClass()
+    {
+        return $this->tagClass;
     }
 
     /**

@@ -25,6 +25,7 @@ use FOS\Message\Model\TagInterface;
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
  * @author Christian Riesen <chris.riesen@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 interface DriverInterface
 {
@@ -112,6 +113,13 @@ interface DriverInterface
     public function findMessages(ConversationInterface $conversation, $offset = 0, $limit = 20, $sortDirection = 'ASC');
 
     /**
+     * Return the list of tags.
+     *
+     * @return Collection The tags
+     */
+    public function findTags();
+
+    /**
      * Persist a conversation in the persistance layer.
      * The flush method will be called later so this method can rely
      * on it to really write into the persistance layer.
@@ -154,6 +162,14 @@ interface DriverInterface
      * @return bool True if the save succeed, false otherwise
      */
     public function persistMessagePerson(MessagePersonInterface $messagePerson);
+
+    /**
+     * Persist a tag in the persistance layer.
+     *
+     * @param TagInterface $tag The tag to persist
+     * @return bool True if the save succeed, false otherwise
+     */
+    public function persistTag(TagInterface $tag);
 
     /**
      * Flush the previous `persistXXX()` calls by really writing in the

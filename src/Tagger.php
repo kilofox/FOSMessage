@@ -23,6 +23,7 @@ use FOS\Message\Model\TagInterface;
  * (such as "archived", "deleted", etc.).
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
+ * @author Tinsh <kilofox2000@gmail.com>
  */
 class Tagger implements TaggerInterface
 {
@@ -111,4 +112,34 @@ class Tagger implements TaggerInterface
 
         return true;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->driver->findTags();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createTag(TagInterface $tag)
+    {
+        $tags = $this->getTags();
+
+        $exists = $tags->exists(function($key, $value) use ($tag) {
+            return $value->getName() === $tag->getName();
+        });
+
+        if ($exists) {
+            return false;
+        }
+
+        $this->driver->persist($tag);
+        $this->driver->flush();
+
+        return true;
+    }
+
 }

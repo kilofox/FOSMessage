@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\Message\Model\MessagePerson as BaseMessagePerson;
 
 /**
- * @ORM\Table(name="fos_message_messages_persons")
+ * @ORM\Table(name="user_message_messages_persons")
  * @ORM\Entity
  */
 class MessagePerson extends BaseMessagePerson
@@ -42,6 +42,7 @@ class MessagePerson extends BaseMessagePerson
      * @var \FOS\Message\Model\PersonInterface
      *
      * @ORM\ManyToOne(targetEntity="FOS\Message\Model\PersonInterface", cascade={"all"})
+     * @ORM\JoinColumn(name="sender_id", referencedColumnName="user_id")
      */
     protected $person;
 
