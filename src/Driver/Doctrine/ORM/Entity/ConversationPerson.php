@@ -44,7 +44,7 @@ class ConversationPerson extends BaseConversationPerson
      * @var \FOS\Message\Model\PersonInterface
      *
      * @ORM\ManyToOne(targetEntity="FOS\Message\Model\PersonInterface", cascade={"all"})
-     * @ORM\JoinColumn(name="person_id", referencedColumnName="user_id")
+     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      */
     protected $person;
 
